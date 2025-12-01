@@ -5,7 +5,9 @@ const print = std.debug.print;
 
 pub fn main() !void {
     print("Progress:\n", .{});
-    print("- [ ] Day 01\n" ++
+    print("- [x] Day 01\n" ++
+        "  - [x] Part 1\n" ++
+        "  - [x] Part 2\n" ++
         "- [ ] Day 02\n" ++
         "- [ ] Day 03\n" ++
         "- [ ] Day 04\n" ++
@@ -17,4 +19,13 @@ pub fn main() !void {
         "- [ ] Day 10\n" ++
         "- [ ] Day 11\n" ++
         "- [ ] Day 12\n", .{});
+
+    //var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+    //defer _ = gpa.deinit();
+    //const alloc = gpa.allocator();
+
+    //const input = try std.fs.cwd().readFileAlloc(alloc, "day01.txt", 69420);
+    //defer alloc.free(input);
+
+    //print("result: {}\n", .{advent_of_zig.day01.part2(input)});
 }
