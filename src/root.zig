@@ -1,0 +1,15 @@
+const std = @import("std");
+
+//const day01 = @import("day01.zig");
+//const day02 = @import("day02.zig");
+//const day03 = @import("day03.zig");
+//const day04 = @import("day04.zig");
+//const day05 = @import("day05.zig");
+//const day06 = @import("day06.zig");
+//const day07 = @import("day07.zig");
+//const day08 = @import("day08.zig");
+//const day09 = @import("day09.zig");
+//const day10 = @import("day10.zig");
+//const day11 = @import("day11.zig");
+//const day12 = @import("day12.zig");
+
