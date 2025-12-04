@@ -26,7 +26,7 @@ pub fn part2(input: []const u8) !u64 {
         var r = line.len - 12;
         for (0..12) |i| {
             if (l == r + 1) {
-                mem.copyForwards(u8, number_str[i..], line[l..]);
+                @memcpy(number_str[i..], line[l..]);
                 break;
             }
 
