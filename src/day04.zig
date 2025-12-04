@@ -62,9 +62,6 @@ pub fn part2(input: []const u8) !u64 {
         }
     }
 
-    var dirty_grid = try grid.clone(sysalloc);
-    defer dirty_grid.deinit(sysalloc);
-
     var changes: bool = true;
     while (changes) {
         changes = false;
@@ -92,14 +89,12 @@ pub fn part2(input: []const u8) !u64 {
                 }
 
                 if (neighbors < 4) {
-                    dirty_grid.items[r * row_size + c] = '.';
+                    grid.items[r * row_size + c] = '.';
                     changes = true;
                     result += 1;
                 }
             }
         }
-
-        @memcpy(grid.items, dirty_grid.items);
     }
 
     return result;
