@@ -32,12 +32,12 @@ pub fn main() !void {
         "- [ ] Day 11\n" ++
         "- [ ] Day 12\n", .{});
 
-    //var gpa = std.heap.GeneralPurposeAllocator(.{}){};
-    //defer _ = gpa.deinit();
-    //const alloc = gpa.allocator();
+    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+    defer _ = gpa.deinit();
+    const alloc = gpa.allocator();
 
-    //const input = try std.fs.cwd().readFileAlloc(alloc, "day07.txt", 69420);
-    //defer alloc.free(input);
+    const input = try std.fs.cwd().readFileAlloc(alloc, "day08.txt", 69420);
+    defer alloc.free(input);
 
-    //print("result: {}\n", .{advent_of_zig.day07.part2(input) catch unreachable});
+    print("result: {}\n", .{advent_of_zig.day08.part1(input) catch unreachable});
 }
