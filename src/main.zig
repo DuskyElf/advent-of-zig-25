@@ -26,18 +26,20 @@ pub fn main() !void {
         "- [x] Day 07\n" ++
         "  - [x] Part 1\n" ++
         "  - [x] Part 2\n" ++
-        "- [ ] Day 08\n" ++
+        "- [x] Day 08\n" ++
+        "  - [x] Part 1\n" ++
+        "  - [x] Part 2\n" ++
         "- [ ] Day 09\n" ++
         "- [ ] Day 10\n" ++
         "- [ ] Day 11\n" ++
         "- [ ] Day 12\n", .{});
 
-    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
-    defer _ = gpa.deinit();
-    const alloc = gpa.allocator();
+    //var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+    //defer _ = gpa.deinit();
+    //const alloc = gpa.allocator();
 
-    const input = try std.fs.cwd().readFileAlloc(alloc, "day08.txt", 69420);
-    defer alloc.free(input);
+    //const input = try std.fs.cwd().readFileAlloc(alloc, "day08.txt", 69420);
+    //defer alloc.free(input);
 
-    print("result: {}\n", .{advent_of_zig.day08.part1(input) catch unreachable});
+    //print("result: {}\n", .{advent_of_zig.day08.part1(input) catch unreachable});
 }

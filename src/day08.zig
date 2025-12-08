@@ -6,7 +6,7 @@ const fmt = std.fmt;
 const Vec3 = @Vector(3, i64);
 
 fn distance_squared(a: Vec3, b: Vec3) i64 {
-    const c = (a - b) * (a - b);
+    const c = (a - b) * (a - b); // i64 because of stupid integer underflow
     return c[0] + c[1] + c[2];
 }
 
@@ -38,15 +38,12 @@ pub fn part1(input: []const u8) !u64 {
         }
     }
 
-    var iota: u16 = 1;
+    var iota: u16 = 1; // for group ids
     const slice = junctions.slice();
     const poss = slice.items(.pos);
     var circuit_ids = slice.items(.circuit_id);
 
     var last_min: u64 = 0;
-    var freq_map = std.AutoHashMap(u16, u16).init(sysalloc);
-    try freq_map.ensureTotalCapacity(@intCast(row_count));
-    defer freq_map.deinit();
 
     //for (0..10) |_| { // for sample input
     for (0..1000) |_| { // for real input
@@ -86,9 +83,12 @@ pub fn part1(input: []const u8) !u64 {
         }
     }
 
+    var freq_map = std.AutoHashMap(u16, u16).init(sysalloc);
+    try freq_map.ensureTotalCapacity(@intCast(row_count));
+    defer freq_map.deinit();
+
     var i: u32 = 0;
     for (circuit_ids) |pid| {
-        //std.debug.print("idx: {}, pid: {}\n", .{ i, pid });
         const existing = freq_map.get(pid);
         if (existing) |val| {
             freq_map.putAssumeCapacity(pid, val + 1);
@@ -98,7 +98,6 @@ pub fn part1(input: []const u8) !u64 {
         i += 1;
     }
 
-    // find top 3 frequencies
     var top3: [3]u64 = .{ 0, 0, 0 };
 
     var it = freq_map.iterator();
@@ -119,12 +118,10 @@ pub fn part1(input: []const u8) !u64 {
     }
 
     for (top3) |t| {
-        //std.debug.print("top count: {}\n", .{ t });
         if (t == 0) continue;
         result *= t;
     }
 
-    freq_map.clearRetainingCapacity();
     return result;
 }
 
